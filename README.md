@@ -1,4 +1,15 @@
 # Universal Chimp Face Embedder
+
+```bibtex
+@InProceedings{self2025iashin,
+  title={Self-supervised Learning on Camera Trap Footage Yields a Strong Universal Face Embedder},
+  author={Iashin, V., Lee, H., Schofield, D., and Zisserman, A.},
+  booktitle={ICIP Workshop on Computer Vision for Ecological and Biodiversity Monitoring},
+  year={2025},
+  organization={IEEE}
+}
+```
+
 [Project Page](https://www.robots.ox.ac.uk/~vgg/research/ChimpUFE/) • [Paper (to be added)]
 
 This repo provides two main functionalities at the moment:
