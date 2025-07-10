@@ -18,9 +18,24 @@ pip install -r requirements.txt
 - `src/face_embedder/`: Source code for the Universal Chimp Face Embedder.
 - `src/tracker/`: Source code for YOLOX object detection and ByteTracker tracking.
 
+## Pre-trained Weights
+
+Before running the demos, download the pre-trained weights for the ViT-Base version from [here (415 MB)](https://github.com/v-iashin/ChimpUFE/releases/download/v1.0/25-06-06T20-51-36_330k.pth) and place them in the `./assets/weights` folder:
+```bash
+# face recognition weights
+wget -P ./assets/weights https://github.com/v-iashin/ChimpUFE/releases/download/v1.0/25-06-06T20-51-36_330k.pth
+```
+and if you'd like to run the camera trap demo, download the YOLOX weights from [here (378 MB)](https://github.com/v-iashin/ChimpUFE/releases/download/v1.0/yolox_best_only_model.pth)
+```bash
+# camera trap weights
+wget -P ./assets/weights https://github.com/v-iashin/ChimpUFE/releases/download/v1.0/yolox_best_only_model.pth
+```
+
+**Note**: All pre-trained weights are licensed under non-commercial use only.
+
 ## Usage
 
-### 1. Compare two images directly
+### 2. Compare Two Images Directly
 This prints the similarity score between two images:
 ```bash
 python demo_face_rec.py \
@@ -31,7 +46,7 @@ python demo_face_rec.py \
 # Cosine similarity between the query and the gallery image: 0.1976
 ```
 
-### 2. Compare a query image to a gallery folder
+### 3. Compare a Query Image to a Gallery Folder
 This finds the top-k most similar images in the gallery to your query image.
 The gallery folder should be structured as subfolders (e.g., `gallery/000000/`, `gallery/000001/`, etc.) each containing images.
 
@@ -56,7 +71,7 @@ python demo_face_rec.py \
 ```
 
 ### 3. Camera Trap Demo
-This runs the camera trap demo, which detects and tracks animals in a video (e.g. `loma_mt.mp4` obtained from [YouTube](https://www.youtube.com/watch?v=9f_KBEQOspU)).
+This runs the camera trap demo, which detects and tracks animals in a video (e.g. `./assets/loma_mt.mp4` obtained from [YouTube](https://www.youtube.com/watch?v=9f_KBEQOspU)).
 
 ```bash
 python demo_camera_trap.py \
