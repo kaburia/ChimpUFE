@@ -35,7 +35,7 @@ wget -P ./assets/weights https://github.com/v-iashin/ChimpUFE/releases/download/
 
 ## Usage
 
-### 2. Compare Two Images Directly
+### 1. Compare Two Images Directly
 This prints the similarity score between two images:
 ```bash
 python demo_face_rec.py \
@@ -46,7 +46,7 @@ python demo_face_rec.py \
 # Cosine similarity between the query and the gallery image: 0.1976
 ```
 
-### 3. Compare a Query Image to a Gallery Folder
+### 2. Compare a Query Image to a Gallery Folder
 This finds the top-k most similar images in the gallery to your query image.
 The gallery folder should be structured as subfolders (e.g., `gallery/000000/`, `gallery/000001/`, etc.) each containing images.
 
