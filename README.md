@@ -60,6 +60,7 @@ python demo_face_rec.py \
 ### 2. Compare a Query Image to a Gallery Folder
 This finds the top-k most similar images in the gallery to your query image.
 The gallery folder should be structured as subfolders (e.g., `gallery/000000/`, `gallery/000001/`, etc.) each containing images.
+We are going to use a few examples from the [PetFace dataset](https://dahlian00.github.io/PetFacePage/) for demonstration purposes.
 
 ```bash
 python demo_face_rec.py \
@@ -119,5 +120,13 @@ and find the results in `./assets/detections/vis`.
 * The **pre-trained model weights** are provided under the [CC BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ## Acknowledgements
+
+A few shoutouts to the open-source projects and datasets that we used in this work:
+- [DINOv2](https://github.com/facebookresearch/dinov2)
+- [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)
+- [ByteTrack](https://github.com/ifzhang/ByteTrack)
+- [PetFace dataset](https://dahlian00.github.io/PetFacePage/)
+- [PanAf20K dataset](https://data.bris.ac.uk/data/dataset/1h73erszj3ckn2qjwm4sqmr2wt)
+- and, of course, PyTorch ecosystem, Opencv, and other open-source projects that we used in this work (see packages in `requirements.txt`).
 
 This research was funded by EPSRC Programme Grant VisualAI EP/T028572/1. We thank the Guinean authorities (DGERSIT & IREB), T. Matsuzawa, Kyoto University, and contributors to the Bossou dataset, Tacugama Chimpanzee Sanctuary, local authorities, and field staff for access to Loma Mountains camera trap data and support with data sharing and conservation.
