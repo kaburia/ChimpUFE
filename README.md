@@ -1,20 +1,20 @@
-# Universal Chimp Face Embedder
+# Universal Chimpanzee Face Embedder
 
 ```bibtex
 @InProceedings{self2025iashin,
   title={Self-supervised Learning on Camera Trap Footage Yields a Strong Universal Face Embedder},
   author={Iashin, V., Lee, H., Schofield, D., and Zisserman, A.},
-  booktitle={ICIP Workshop on Computer Vision for Ecological and Biodiversity Monitoring},
+  booktitle={2025 IEEE International Conference on Image Processing Challenges and Workshops (ICIPCW)},
   year={2025},
   organization={IEEE}
 }
 ```
 
-[Project Page](https://www.robots.ox.ac.uk/~vgg/research/ChimpUFE/) • [Paper (to be added)]
+[Project Page](https://www.robots.ox.ac.uk/~vgg/research/ChimpUFE/) • [Paper](https://arxiv.org/abs/2507.10552)
 
 This repo provides two main functionalities at the moment:
 1. **Face Recognition**: Compare a query image to a gallery of images using a Universal Face Embedder model to find similar faces or compute similarity scores.
-2. **Camera Trap Detection**: Detect and track animals (chimps) in video footage using YOLOX object detection with ByteTracker for multi-object tracking.
+2. **Camera Trap Detection**: Detect and track animals (chimpanzees) in video footage using YOLOX object detection with ByteTracker for multi-object tracking.
 
 ## Installation
 Install the required packages in your python environment using the provided `requirements.txt`:
@@ -25,8 +25,8 @@ pip install -r requirements.txt
 ## Files and Folders
 - `demo_face_rec.py`: Main script for face recognition inference.
 - `demo_camera_trap.py`: Main script for camera trap detection and tracking.
-- `assets/`: Example images, videos, gallery structure, and pre-trained model weights.
-- `src/face_embedder/`: Source code for the Universal Chimp Face Embedder.
+- `assets/`: Example images, videos, and gallery structure.
+- `src/face_embedder/`: Source code for the Universal Chimpanzee Face Embedder.
 - `src/tracker/`: Source code for YOLOX object detection and ByteTracker tracking.
 
 ## Pre-trained Weights
@@ -49,13 +49,37 @@ wget -P ./assets/weights https://github.com/v-iashin/ChimpUFE/releases/download/
 ### 1. Compare Two Images Directly
 This prints the similarity score between two images:
 ```bash
+# different individuals
 python demo_face_rec.py \
   --pretrained_weights ./assets/weights/25-06-06T20-51-36_330k.pth \
   --query_path ./assets/gallery/000000/01.png \
   --gallery_path ./assets/gallery/000001/00.png
 
 # Cosine similarity between the query and the gallery image: 0.1976
+
+# same individual
+python demo_face_rec.py \
+  --pretrained_weights ./assets/weights/25-06-06T20-51-36_330k.pth \
+  --query_path ./assets/gallery/000000/01.png \
+  --gallery_path ./assets/gallery/000000/02.png
+
+# Cosine similarity between the query and the gallery image: 0.4365
 ```
+
+**Picking a Threshold for Face Recognition.**
+Verification of face recognition results often requires setting a threshold on the (cosine) similarity scores.
+This threshold determines whether a pair of faces is considered a match or not.
+You can choose this threshold based on the desired trade-off between true positive rate (TPR) and false positive rate (FPR).
+Here are some example thresholds based on the ROC curve analysis on PerFaceChimp dataset:
+
+```
+TPR @ 0.1% FPR = 9.14% (threshold=0.57913)
+TPR @ 1.0% FPR = 20.74% (threshold=0.49015)
+TPR @ 5.0% FPR = 36.95% (threshold=0.41365)
+TPR @ 10.0% FPR = 47.09% (threshold=0.37316)
+```
+
+Thus, for a given false positive rate (FPR), i.e. if we allow 10% of the pairs to be falsely identified as matches, we can expect to correctly identify 47.09% of the true matches (true positive rate, TPR) with a threshold of `0.37316`.
 
 ### 2. Compare a Query Image to a Gallery Folder
 This finds the top-k most similar images in the gallery to your query image.
@@ -112,6 +136,7 @@ The results will be saved in the `assets/detections` folder.
 
 If you want to overlay the tracking results on the video, you can add the `--overlay_results_on_video` flag
 and find the results in `./assets/detections/vis`.
+
 
 
 ## License
