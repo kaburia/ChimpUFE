@@ -47,7 +47,7 @@ wget -P ./assets/weights https://github.com/v-iashin/ChimpUFE/releases/download/
 ## Usage
 
 ### 1. Compare Two Images Directly
-This prints the similarity score between two images:
+This prints the similarity score between two images from [PetFace dataset](https://dahlian00.github.io/PetFacePage/).:
 ```bash
 # different individuals
 python demo_face_rec.py \
@@ -80,6 +80,8 @@ TPR @ 10.0% FPR = 47.09% (threshold=0.37316)
 ```
 
 Thus, for a given false positive rate (FPR), i.e. if we allow 10% of the pairs to be falsely identified as matches, we can expect to correctly identify 47.09% of the true matches (true positive rate, TPR) with a threshold of `0.37316`.
+
+*Note*: The threshold values are dataset-specific, so you may need to adjust them based on your dataset and requirements.
 
 ### 2. Compare a Query Image to a Gallery Folder
 This finds the top-k most similar images in the gallery to your query image.
@@ -154,4 +156,4 @@ A few shoutouts to the open-source projects and datasets that we used in this wo
 - [PanAf20K dataset](https://data.bris.ac.uk/data/dataset/1h73erszj3ckn2qjwm4sqmr2wt)
 - and, of course, PyTorch ecosystem, Opencv, and other open-source projects that we used in this work (see packages in `requirements.txt`).
 
-This research was funded by EPSRC Programme Grant VisualAI EP/T028572/1. We thank the Guinean authorities (DGERSIT & IREB), T. Matsuzawa, Kyoto University, and contributors to the Bossou dataset, Tacugama Chimpanzee Sanctuary, local authorities, and field staff for access to Loma Mountains camera trap data and support with data sharing and conservation.
+This research was funded by EPSRC Programme Grant [VisualAI](https://www.robots.ox.ac.uk/~vgg/projects/visualai/) EP/T028572/1. We thank the Guinean authorities (DGERSIT & IREB), Tetsuro Matsuzawa, Kyoto University, and contributors to the Bossou dataset, [Tacugama Chimpanzee Sanctuary](https://www.tacugama.com/), local authorities, and field staff for access to Loma Mountains National Park camera trap data and support with data sharing and conservation.
